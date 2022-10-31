@@ -18,6 +18,8 @@ type Salon {
     openingTime: String
     closingTime: String
     contractNumber: String
+    services:[Catalog]
+    staffs:[Staff]
 }
 
 type Catalog {

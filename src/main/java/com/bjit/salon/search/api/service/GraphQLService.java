@@ -1,10 +1,7 @@
 package com.bjit.salon.search.api.service;
 
 
-import com.bjit.salon.search.api.dataFetchers.AllSalonDataFetcher;
-import com.bjit.salon.search.api.dataFetchers.CatalogDataFetcher;
-import com.bjit.salon.search.api.dataFetchers.SalonDataFetcher;
-import com.bjit.salon.search.api.dataFetchers.StaffDataFetcher;
+import com.bjit.salon.search.api.dataFetchers.*;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
@@ -37,6 +34,11 @@ public class GraphQLService {
     private CatalogDataFetcher catalogDataFetcher;
 
     @Autowired
+    private CatalogsBySalon catalogsBySalon;
+    @Autowired
+    private StaffsBySalon staffsBySalon;
+
+    @Autowired
     private StaffDataFetcher staffDataFetcher;
 
     @PostConstruct
@@ -59,6 +61,10 @@ public class GraphQLService {
                         .dataFetcher("salon", salonDataFetcher)
                         .dataFetcher("salonCatalogs", catalogDataFetcher)
                         .dataFetcher("salonStaffs", staffDataFetcher))
+                .type("Salon", typeWiring -> typeWiring
+                        .dataFetcher("services", catalogsBySalon))
+                .type("Salon", typeWiring -> typeWiring
+                        .dataFetcher("staffs", staffsBySalon))
                 .build();
     }
 
