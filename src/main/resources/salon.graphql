@@ -1,0 +1,39 @@
+schema {
+    query: Query
+}
+
+type Query {
+    allSalon:[Salon]
+    salon(salonId: String): Salon
+    salonCatalogs(salonId:String):[Catalog]
+    salonStaffs(salonId:String):[Staff]
+}
+
+type Salon {
+    id:String
+    name: String
+    description: String
+    address: String
+    reviews: String
+    openingTime: String
+    closingTime: String
+    contractNumber: String
+}
+
+type Catalog {
+    name: String
+    description: String
+    approximateTimeForCompletion: String
+    payableAmount: String
+}
+
+type Staff {
+    address: String
+    isAvailable: Boolean
+    contractNumber: String
+    activities:[Activity]
+}
+
+type Activity {
+    workingStatus: String
+}
