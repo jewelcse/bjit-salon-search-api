@@ -10,8 +10,8 @@ import java.util.List;
 @Builder
 public class Staff {
 
+    private Long id;
     private String address;
     private boolean isAvailable;
     private String contractNumber;
-    private List<StaffActivity> activities;
 }

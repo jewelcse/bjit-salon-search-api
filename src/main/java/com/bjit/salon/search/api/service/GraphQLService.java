@@ -39,6 +39,9 @@ public class GraphQLService {
     private StaffsBySalon staffsBySalon;
 
     @Autowired
+    private ActivitiesByStaff staffActivities;
+
+    @Autowired
     private StaffDataFetcher staffDataFetcher;
 
     @PostConstruct
@@ -65,6 +68,8 @@ public class GraphQLService {
                         .dataFetcher("services", catalogsBySalon))
                 .type("Salon", typeWiring -> typeWiring
                         .dataFetcher("staffs", staffsBySalon))
+                .type("Staff", typeWiring -> typeWiring
+                        .dataFetcher("activities", staffActivities))
                 .build();
     }
 
