@@ -16,4 +16,6 @@ public class StaffActivity {
     private LocalTime startTime;
     private LocalTime endTime;
     private String workingStatus;
+    private Long consumerId;
+    private Long reservationId;
 }

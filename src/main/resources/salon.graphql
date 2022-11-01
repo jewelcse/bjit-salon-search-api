@@ -38,4 +38,9 @@ type Staff {
 
 type Activity {
     workingStatus: String
+    reservationId:String
+    consumerId:String
+    workingDate:String
+    startTime:String
+    endTime:String
 }
